@@ -1,2 +1,0 @@
-# Tictactoe
-Created with CodeSandbox
