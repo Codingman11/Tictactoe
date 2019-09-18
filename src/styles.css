@@ -10,13 +10,10 @@ td {
   font-size: 30px;
   text-align: center;
   vertical-align: middle;
-  line-height: 60px;
+  line-height: 59px;
   padding: 60px;
 }
 
-.cell {
-  height: 59px;
-}
 .x {
   background-color: rgb(124, 252, 0);
 }
