@@ -1,12 +1,16 @@
 import "./styles.css";
+import { parse } from "path";
+
+var pla1 = "X",
+  pla2 = "O";
+
+let moves = 0;
+let player1moves = 0;
+let player2moves = 0;
 
 //Creating array
 function createArray() {
   let array = [];
-
-  for (let i = 0; i < 5; i++) {
-    array[i] = new Array(5);
-  }
 
   return array;
 }
@@ -23,8 +27,9 @@ function addTable(array) {
       let addTd = document.createElement("td");
       addTd.setAttribute("id", x);
       addTd.setAttribute("class", "cell");
-      array[i][j] = x;
-      let node = document.createTextNode(" ");
+
+      array[x] = x.toString();
+      let node = document.createTextNode("");
       addTd.appendChild(node);
       addTr.appendChild(addTd);
       x++;
@@ -39,36 +44,60 @@ function addTable(array) {
 const array = createArray();
 addTable(array);
 
-/*function test(cells) {
-  for (let i = 0; i < cells.length; i++) {
-    const t1 = document.getElementById(i);
-    if (t1.firstChild.nodeValue === " ") {
-      t1.firstChild.nodeValue = "X";
-    } else {
-      t1.firstChild.nodeValue = "O";
-    }
+function winCondition(moves, cells) {
+  let win = false;
+
+  if (moves === array.length) {
+    alert("draw");
   }
+  console.log(array);
 }
 
-let el = document.getElementById("table");
-el.addEventListener("click", test(cells), false);*/
-let cells = document.querySelectorAll(".cell");
-
-function test(cells) {
-  var pla1 = "X",
-    pla2 = "O";
+function test() {
+  let cells = document.querySelectorAll(".cell");
   let turn = 0;
+
+  var getId = function() {
+    var el = this;
+    let arId = parseInt(el.id, 10);
+    console.log(arId);
+
+    if (turn === 0) {
+      el.innerHTML = pla1;
+      turn = 1;
+      array[arId] = pla1;
+      el.style.backgroundColor = "rgb(124, 252, 0)";
+    } else if (turn === 1) {
+      el.innerHTML = pla2;
+      turn = 0;
+      array[arId] = pla2;
+      el.style.backgroundColor = "rgb(250, 128, 114)";
+      el.style.fontFamily = "helvetica";
+    }
+
+    moves++;
+    console.log("Moves: " + moves);
+    winCondition(moves, cells);
+  };
+
   for (var i = 0; i < cells.length; i++) {
-    cells[i].onclick = function() {
-      if (turn === 0) {
-        this.innerHTML = pla1;
-        turn = 1;
-      } else if (turn === 1) {
-        this.innerHTML = pla2;
-        turn = 0;
-      }
-    };
+    cells[i].addEventListener("click", getId);
   }
 }
 
-test(cells);
+/*for (var a = 0; a < array.length; a++) {
+    console.log(array[a]);
+  }*/
+
+test();
+
+function changeColor(player) {
+  if (player.innerHTML === "X") {
+    player.style.color = "red";
+  }
+}
+
+function check() {
+  var cell = document.querySelectorAll(".cell");
+  cell.addEventListener("click", changeColor);
+}
