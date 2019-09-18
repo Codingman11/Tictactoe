@@ -6,7 +6,6 @@
 }
 
 td {
-  padding: 61px;
 }
 
 .cell {
@@ -14,7 +13,7 @@ td {
   font-size: 30px;
   text-align: center;
   vertical-align: middle;
-  height: 59px;
+  padding: 60px;
 }
 
 .x {
