@@ -5,8 +5,6 @@ var pla1 = "X",
   pla2 = "O";
 
 let moves = 0;
-let player1moves = 0;
-let player2moves = 0;
 
 //Creating array
 function createArray() {
@@ -45,8 +43,6 @@ const array = createArray();
 addTable(array);
 
 function winCondition(moves, cells) {
-  let win = false;
-
   if (moves === array.length) {
     alert("draw");
   }
@@ -59,20 +55,20 @@ function test() {
 
   var getId = function() {
     var el = this;
+
     let arId = parseInt(el.id, 10);
     console.log(arId);
 
     if (turn === 0) {
+      el.classList.add("x");
       el.innerHTML = pla1;
       turn = 1;
       array[arId] = pla1;
-      el.style.backgroundColor = "rgb(124, 252, 0)";
     } else if (turn === 1) {
+      el.classList.add("o");
       el.innerHTML = pla2;
       turn = 0;
       array[arId] = pla2;
-      el.style.backgroundColor = "rgb(250, 128, 114)";
-      el.style.fontFamily = "helvetica";
     }
 
     moves++;
@@ -90,14 +86,3 @@ function test() {
   }*/
 
 test();
-
-function changeColor(player) {
-  if (player.innerHTML === "X") {
-    player.style.color = "red";
-  }
-}
-
-function check() {
-  var cell = document.querySelectorAll(".cell");
-  cell.addEventListener("click", changeColor);
-}
