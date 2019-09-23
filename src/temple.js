@@ -49,11 +49,11 @@ function winCondition(moves, cells) {
   console.log(array);
 }
 
-function test() {
+function test(m) {
   let cells = document.querySelectorAll(".cell");
   let turn = 0;
 
-  var getId = function() {
+  let getId = function() {
     var el = this;
 
     let arId = parseInt(el.id, 10);
@@ -74,15 +74,37 @@ function test() {
     moves++;
     console.log("Moves: " + moves);
     winCondition(moves, cells);
+    clearing(m);
   };
 
   for (var i = 0; i < cells.length; i++) {
-    cells[i].addEventListener("click", getId);
+    let j = cells[i].addEventListener("click", getId);
   }
 }
 
 /*for (var a = 0; a < array.length; a++) {
     console.log(array[a]);
   }*/
+function move() {
+  var elem = document.getElementById("myBar");
+  let width = 0;
+  let id = setInterval(frame, 1000);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width += 10;
+      elem.style.width = width + "%";
+    }
+    return id;
+  }
+  width = 0;
+  return id;
+}
 
-test();
+function clearing(m) {
+  clearInterval(m);
+  move();
+}
+var m = move();
+test(m);
