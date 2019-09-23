@@ -101,5 +101,5 @@ function move() {
   return id;
 }
 
-move();
 test();
+move();
