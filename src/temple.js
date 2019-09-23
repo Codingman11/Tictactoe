@@ -1,5 +1,4 @@
 import "./styles.css";
-import { parse } from "path";
 
 var pla1 = "X",
   pla2 = "O";
