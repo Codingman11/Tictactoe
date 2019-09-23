@@ -49,7 +49,7 @@ function winCondition(moves, cells) {
   console.log(array);
 }
 
-function test(m) {
+function test() {
   let cells = document.querySelectorAll(".cell");
   let turn = 0;
 
@@ -74,7 +74,6 @@ function test(m) {
     moves++;
     console.log("Moves: " + moves);
     winCondition(moves, cells);
-    clearing(m);
   };
 
   for (var i = 0; i < cells.length; i++) {
@@ -102,9 +101,5 @@ function move() {
   return id;
 }
 
-function clearing(m) {
-  clearInterval(m);
-  move();
-}
-var m = move();
-test(m);
+move();
+test();
