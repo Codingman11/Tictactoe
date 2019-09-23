@@ -1,4 +1,5 @@
 import "./styles.css";
+import { parse } from "path";
 
 var pla1 = "X",
   pla2 = "O";
@@ -52,7 +53,7 @@ function test() {
   let cells = document.querySelectorAll(".cell");
   let turn = 0;
 
-  let getId = function() {
+  var getId = function() {
     var el = this;
 
     let arId = parseInt(el.id, 10);
@@ -76,28 +77,8 @@ function test() {
   };
 
   for (var i = 0; i < cells.length; i++) {
-    let j = cells[i].addEventListener("click", getId);
+    cells[i].addEventListener("click", getId);
   }
-}
-
-/*for (var a = 0; a < array.length; a++) {
-    console.log(array[a]);
-  }*/
-function move() {
-  var elem = document.getElementById("myBar");
-  let width = 0;
-  let id = setInterval(frame, 1000);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width += 10;
-      elem.style.width = width + "%";
-    }
-    return id;
-  }
-  width = 0;
-  return id;
 }
 
 test();
