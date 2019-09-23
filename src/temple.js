@@ -102,4 +102,3 @@ function move() {
 }
 
 test();
-move();
