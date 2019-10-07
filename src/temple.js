@@ -77,7 +77,7 @@ function test() {
     console.log("Moves: " + moves);
     winCondition(moves, cells);
 
-    //move();
+    move();
   };
 
   for (var i = 0; i < cells.length; i++) {
@@ -85,23 +85,21 @@ function test() {
   }
 }
 
-/*for (var a = 0; a < array.length; a++) {
-    console.log(array[a]);
-  }*/
-/*function move() {
+function move() {
   var elem = document.getElementById("myBar");
-  let width = 0;
-  let id = setInterval(frame, 1000);
+  var width = 10;
+  var timer = 0;
+  var id = setInterval(frame, 1000);
   function frame() {
-    if (width >= 100) {
+    if (timer >= 10) {
       clearInterval(id);
     } else {
-      width += 10;
+      width++;
+      timer++;
       elem.style.width = width + "%";
+      elem.innerHTML = timer;
     }
   }
-  width = 0;
-  return id;
 }
-var m = move();*/
+
 test();
