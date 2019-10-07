@@ -53,7 +53,8 @@ function test() {
   let cells = document.querySelectorAll(".cell");
   let turn = 0;
 
-  var getId = function() {
+  var getId;
+  getId = function() {
     var el = this;
 
     let arId = parseInt(el.id, 10);
@@ -62,6 +63,7 @@ function test() {
     if (turn === 0) {
       el.classList.add("x");
       el.innerHTML = pla1;
+
       turn = 1;
       array[arId] = pla1;
     } else if (turn === 1) {
@@ -74,15 +76,32 @@ function test() {
     moves++;
     console.log("Moves: " + moves);
     winCondition(moves, cells);
+
+    //move();
   };
 
   for (var i = 0; i < cells.length; i++) {
-    cells[i].addEventListener("click", getId);
+    let j = cells[i].addEventListener("click", getId);
   }
 }
 
 /*for (var a = 0; a < array.length; a++) {
     console.log(array[a]);
   }*/
-
+/*function move() {
+  var elem = document.getElementById("myBar");
+  let width = 0;
+  let id = setInterval(frame, 1000);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width += 10;
+      elem.style.width = width + "%";
+    }
+  }
+  width = 0;
+  return id;
+}
+var m = move();*/
 test();
