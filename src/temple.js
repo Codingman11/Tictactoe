@@ -1,5 +1,4 @@
 import "./styles.css";
-import { parse } from "path";
 
 var pla1 = "X",
   pla2 = "O";
@@ -37,19 +36,10 @@ function addTable(array) {
     let tab = document.getElementById("board");
     tab.appendChild(cTable);
   }
+  return array;
 }
 
-const array = createArray();
-addTable(array);
-
-function winCondition(moves, cells) {
-  if (moves === array.length) {
-    alert("draw");
-  }
-  console.log(array);
-}
-
-function test() {
+function test(array) {
   let cells = document.querySelectorAll(".cell");
   let turn = 0;
 
@@ -73,7 +63,6 @@ function test() {
 
     moves++;
     console.log("Moves: " + moves);
-    winCondition(moves, cells);
   };
 
   for (var i = 0; i < cells.length; i++) {
@@ -81,4 +70,9 @@ function test() {
   }
 }
 
-test();
+function init() {
+  let array = createArray();
+  array = addTable(array);
+  test(array);
+}
+init();

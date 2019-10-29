@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "start": "./node_modules/parcel-bundler/bin/cli.js index.html --port 8080",
+    "start": "parcel index.html --open",
     "build": "parcel build index.html"
   },
   "dependencies": {},
